@@ -1,34 +1,42 @@
 // loads.js
 
-// Hacer disponible el array en window para script.js
+// Array disponible globalmente
 window.guests = [
   { id: "1", name: "Anabella & Leandro", passes: 2 },
-  { id: "2", name: "Macarena & Rogelio",   passes: 2 },
+  { id: "2", name: "Macarena & Rogelio", passes: 2 },
   // … resto de invitados
 ];
 
+// Solo carga los datos del invitado. NO abre la invitación.
 document.addEventListener("DOMContentLoaded", () => {
   const params  = new URLSearchParams(window.location.search);
   const guestId = params.get("id");
   const guest   = window.guests.find(g => g.id === guestId);
 
   if (guest) {
+    // Texto con invitación personalizada
     const invitText = guest.passes > 1
-      ? `¡${guest.name}, están invitados!`
-      : `¡${guest.name}, estás invitado!`;
+      ? `${guest.name}`
+      : `${guest.name}`;
 
-    document.getElementById("nombreInvitado").textContent   = invitText;
-    document.getElementById("cantidadPases").textContent   =
-      `${guest.passes} ${guest.passes === 1 ? "pase" : "pases"}`;
+    // Coloca nombre
+    const nombreElem = document.getElementById("nombreInvitado");
+    if (nombreElem) nombreElem.textContent = invitText;
 
-    // Abrir invitación automáticamente
-    if (typeof abrirInvitacion === "function") abrirInvitacion();
+    // Coloca pases
+    const pasesElem = document.getElementById("cantidadPases");
+    if (pasesElem)
+      pasesElem.textContent = `Pases: ${guest.passes}`;
+      
+    // ❌ YA NO abrir automáticamente la invitación
+    // if (typeof abrirInvitacion === "function") abrirInvitacion();
+
   } else {
-    // Si no existe el invitado, ocultar la invitación completa
-    const invitacion = document.getElementById("invitacion");
-    if (invitacion) invitacion.style.display = "none";
+    console.warn("Invitado no encontrado");
+    // Opcional: podrías ocultar o dejar invitación genérica
   }
 });
+
 
 
   
