@@ -2,7 +2,7 @@
 
 // Array disponible globalmente
 window.guests = [
-  { id: "1", name: "Anabella & Leandro", passes: 2 },
+  { id: "1", name: "Fatima de Leon", passes: 2 },
   { id: "2", name: "Macarena & Rogelio", passes: 2 },
   // … resto de invitados
 ];
