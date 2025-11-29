@@ -90,7 +90,7 @@ function confirmarAsistencia() {
   const pasesElem = document.getElementById('cantidadPases');
   const nombre = nombreElem?.innerText || '';
   const pases = pasesElem?.innerText.replace('Pases: ', '') || '';
-  const msg = `Hola, soy ${nombre} y confirmo mi asistencia con ${pases} pases para la fiesta de quince años.`;
+  const msg = `Hola, soy ${nombre} y confirmo mi asistencia con ${pases} pases para la fiesta de quince años de Meli.`;
   window.open(`https://api.whatsapp.com/send?phone=50241722035&text=${encodeURIComponent(msg)}`, '_blank');
 }
 
